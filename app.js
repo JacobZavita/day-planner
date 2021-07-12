@@ -1,77 +1,159 @@
-var now = moment()
+let timeNow = moment().format('dddd, MMMM Do YYYY');
+let hourNow = moment().format('h');
+let hourNow24 = parseInt(moment().format('HH'));
+let hourNowInt = parseInt(hourNow);
+let Timer;
 
-// Display current date and time at the top of the page
+const hour1 = $('#time1').text();
+const hour2 = $('#time2').text();
+const hour3 = $('#time3').text();
+const hour4 = $('#time4').text();
+const hour5 = $('#time5').text();
+const hour6 = $('#time6').text();
+const hour7 = $('#time7').text();
+const hour8 = $('#time8').text();
+const hour9 = $('#time9').text();
+
+const hour1Int = parseInt(hour1);
+const hour2Int = parseInt(hour2);
+const hour3Int = parseInt(hour3);
+const hour4Int = parseInt(hour4);
+const hour5Int = parseInt(hour5);
+const hour6Int = parseInt(hour6);
+const hour7Int = parseInt(hour7);
+const hour8Int = parseInt(hour8);
+const hour9Int = parseInt(hour9);
+
+// Store user input in local Storage
+
+$('#btn1').click(function () {
+  if ($('#text1').val()) {
+    localStorage.removeItem('text1');
+  }
+
+  const hour1String = JSON.stringify(hour1);
+
+  localStorage.setItem(hour1, $('#text1').val());
+});
+
+$('#btn2').click(function () {
+  if ($('#text2').val()) {
+    localStorage.removeItem('text2');
+  }
+
+  const hour2String = JSON.stringify(hour2);
+
+  localStorage.setItem(hour2, $('#text2').val());
+});
+
+$('#btn3').click(function () {
+  if ($('#text3').val()) {
+    localStorage.removeItem('text3');
+  }
+
+  const hour3String = JSON.stringify(hour3);
+
+  localStorage.setItem(hour3, $('#text3').val());
+});
+
+$('#btn4').click(function () {
+  if ($('#text4').val()) {
+    localStorage.removeItem('text4');
+  }
+
+  const hour4String = JSON.stringify(hour4);
+
+  localStorage.setItem(hour4, $('#text4').val());
+});
+
+$('#btn5').click(function () {
+  if ($('#text5').val()) {
+    localStorage.removeItem('text5');
+  }
+
+  const hour5String = JSON.stringify(hour5);
+
+  localStorage.setItem(hour5, $('#text5').val());
+});
+
+$('#btn6').click(function () {
+  if ($('#text6').val()) {
+    localStorage.removeItem('text6');
+  }
+
+  const hour6String = JSON.stringify(hour6);
+
+  localStorage.setItem(hour6, $('#text6').val());
+});
+
+$('#btn7').click(function () {
+  if ($('#text7').val()) {
+    localStorage.removeItem('text7');
+  }
+
+  const hour7String = JSON.stringify(hour7);
+
+  localStorage.setItem(hour7, $('#text7').val());
+})
+
+$('#btn8').click(function () {
+  if ($('#text8').val()) {
+    localStorage.removeItem('text8');
+  }
+
+  const hour8String = JSON.stringify(hour8);
+
+  localStorage.setItem("text8", $('#text8').val());
+})
+
+$('#btn9').click(function () {
+  if ($('#text9').val()) {
+    localStorage.removeItem('text9');
+  }
+
+  const hour9String = JSON.stringify(hour9);
+
+  localStorage.setItem(hour9, $('#text9').val());
+})
+
+// Display the time using moment.js
+
+var now = moment()
 document.getElementById('currentDay').append(now)
 
-const assignmentDate = new Date('May 22, 2021 11:30:00')
+// Color coding to reflect whether the time slot is in the past, the present or the future 
 
-console.log(moment())
-
-console.log(assignmentDate)
-
-
-let timeNow = moment().format('ddd, MMM Do YYY')
-let hourNow = moment().format('h')
-let hourNow24 = parseInt(moment().format('HH'))
-let hourNowInt = parseInt(hourNow)
-let Timer
-
-const hour9 = $('#hour-9').text()
-const hour10 = $('#hour-10').text()
-const hour11 = $('#hour-11').text()
-const hour12 = $('#hour-12').text()
-const hour13 = $('#hour-13').text()
-const hour14 = $('#hour-14').text()
-const hour15 = $('#hour-15').text()
-const hour16 = $('#hour-16').text()
-const hour17 = $('#hour-17').text()
-
-const hour9Int = parseInt(hour9)
-const hour10Int = parseInt(hour10)
-const hour11Int = parseInt(hour11)
-const hour12Int = parseInt(hour12)
-const hour13Int = parseInt(hour13)
-const hour14Int = parseInt(hour14)
-const hour15Int = parseInt(hour15)
-const hour16Int = parseInt(hour16)
-const hour17Int = parseInt(hour17)
-
-
-// let time = 
-
-// if (moment.isBefore()) {
-//   console.log('before')
-// }
-
-// if (moment.isAfter()) {
-//   console.log('after')
-// }
-
-// if moment isBefore add class to make grey
-// if moment isAfter add class to make green
-
-// assign the time to an array and index it. That would be 9-17
-
-colorCoding()
+colorCoding();
 
 function colorCoding() {
 
-  TIMER = setInterval(colorCoding, 1000)
-
+  TIMER = setInterval(colorCoding, 1000);
+  // Test check: hourNow24 = 20;
   if (hourNow24 >= 9 && hourNow24 <= 17) {
-    let hourInInt = parseInt($('#time' +i).text())
-    if (hourInInt < 9) {
-      hourInInt = hourInInt + 12
-    }
-    if (hourInInt == hourNow24) {
-      $('#text' + i).css('backgrounf-color', '#FB8F78')
-    }
-    if (hourInInt < hourNow24) {
-      $('#text' + i).css('background-color', 'lightgray');
-    }
-    else {
-      $('#text' + i).css('background-color', 'lightgreen');
-    }
-  }
 
+    for (let i = 1; i <= 9; i++) {
+      let hourInInt = parseInt($('#time' + i).text());
+
+      if (hourInInt < 9) {
+        hourInInt = hourInInt + 12;
+      }
+
+      if (hourInInt == hourNow24) {
+        $('#text' + i).css('background-color', '#FB8F78');
+        continue;
+      }
+
+      if (hourInInt < hourNow24) {
+        $('#text' + i).css('background-color', 'lightgray');
+      }
+      else {
+        $('#text' + i).css('background-color', 'lightgreen');
+      }
+    }
+
+  }
+  else {
+    clearInterval(TIMER);
+    $('textarea').css('background-color', 'pink');
+  }
 }
