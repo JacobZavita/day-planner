@@ -1,5 +1,5 @@
 # day-planner
-Github Repo: https://github.com/alwayssmellitfirst/day-planner
+Github Repo: https://github.com/jacobzavita/day-planner
 Deployed version: https://jacobzavita.github.io/day-planner/
 ![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)
 ## Description
